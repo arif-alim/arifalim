@@ -1,13 +1,18 @@
-{% extends "_includes/default.njk" %}
-
-{% block title %}It does work{% endblock %}
-
+{% extends "_includes/layouts/default.njk" %}
+{% block title %}Default Title{% endblock %}
 {% block content %}
-  <div class="fixed inset-0 flex justify-center items-center">
+  {% include 'components/hero.njk' %}
+  <div class="py-24 flex justify-center items-center">
     <div>
       <span class="text-change">Good design</span><br/>
       <span class="change">is<br/>as little design<br/>as possible</span><br/>
       <span x-data="{message:'🤖 Hello World 🤓'}" x-text="message"></span>
+    </div>
+    <div x-data="{ open: false }">
+      <button @click="open = true">Expands</button>
+      <span x-show="open">
+        Content...
+      </span>
     </div>
   </div>
 {% endblock %}
